@@ -1,0 +1,472 @@
+/*
+ * Jellyfin Halloween — Pumpkin & Midnight
+ * Plak dit volledige bestand in Dashboard > Branding > Custom CSS.
+ * Zelfstandig thema: geen externe afbeeldingen, fonts of imports.
+ * Gebaseerd op Jellyfin Web-selectors; niet live getest op versie 12.2.
+ */
+
+:root {
+    --hw-orange: #ff9a3c;
+    --hw-orange-dark: #e78225;
+    --hw-purple: #bd94ff;
+    --hw-bg: #100d16;
+    --hw-panel: #1d1726;
+    --hw-text: #fff4e8;
+    --hw-muted: #c7bbcf;
+    --hw-border: #59405d;
+    --hw-glow: 0 0 22px rgb(255 154 60 / 20%);
+    /* Ingebouwde SVG-decoraties: werken zonder externe bestanden. */
+    --hw-bats: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%201200%2080%27%20preserveAspectRatio%3D%27none%27%3E%3Cdefs%3E%3Cpath%20id%3D%27bat%27%20d%3D%27M0%2010Q12%2015%2022%200L24%2010L28%208L32%2010L34%200Q44%2015%2056%2010Q52%2021%2052%2028Q43%2024%2040%2034Q33%2028%2028%2040Q23%2028%2016%2034Q13%2024%204%2028Q4%2021%200%2010Z%27%2F%3E%3C%2Fdefs%3E%3Cg%20fill%3D%27%23c59169%27%20opacity%3D%27.10%27%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28175%207%29%20rotate%2810%2028%2020%29%20scale%281.05%29%27%2F%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28330%2032%29%20rotate%28-8%2028%2020%29%20scale%28.6%29%27%2F%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28460%2015%29%20rotate%2814%2028%2020%29%20scale%28.85%29%27%2F%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28620%205%29%20rotate%28-12%2028%2020%29%20scale%281.15%29%27%2F%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28785%2029%29%20rotate%288%2028%2020%29%20scale%28.65%29%27%2F%3E%3Cuse%20href%3D%27%23bat%27%20transform%3D%27translate%28930%2012%29%20rotate%28-10%2028%2020%29%20scale%28.95%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    --hw-web-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg transform='translate(120 0) scale(-1 1)' fill='none' stroke='%23ffe0bc' stroke-opacity='.3' stroke-width='1.2'%3E%3Cpath d='M120 0H0M120 0L4 31M120 0L16 60M120 0L35 85M120 0L60 104M120 0L89 116M120 0V120'/%3E%3Cpath d='M96 0Q97 5 97 6Q97 11 99 12Q100 17 103 17Q106 21 108 21Q113 24 114 23Q118 24 120 24M72 0Q73 9 74 12Q75 21 78 24Q80 32 86 34Q92 41 96 42Q105 48 108 46Q117 49 120 48M48 0Q50 14 50 19Q52 32 58 36Q60 47 69 51Q78 61 84 62Q97 72 101 70Q115 74 120 72M24 0Q26 18 27 25Q30 43 37 48Q41 63 52 68Q64 82 72 83Q90 96 95 93Q113 98 120 96M0 0Q3 23 4 31Q7 54 16 60Q21 79 35 85Q49 102 60 104Q82 120 89 116Q111 117 120 120'/%3E%3C/g%3E%3C/svg%3E");
+    --hw-web: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffe0bc' stroke-opacity='.3' stroke-width='1.2'%3E%3Cpath d='M120 0H0M120 0L4 31M120 0L16 60M120 0L35 85M120 0L60 104M120 0L89 116M120 0V120'/%3E%3Cpath d='M96 0Q97 5 97 6Q97 11 99 12Q100 17 103 17Q106 21 108 21Q113 24 114 23Q118 24 120 24M72 0Q73 9 74 12Q75 21 78 24Q80 32 86 34Q92 41 96 42Q105 48 108 46Q117 49 120 48M48 0Q50 14 50 19Q52 32 58 36Q60 47 69 51Q78 61 84 62Q97 72 101 70Q115 74 120 72M24 0Q26 18 27 25Q30 43 37 48Q41 63 52 68Q64 82 72 83Q90 96 95 93Q113 98 120 96M0 0Q3 23 4 31Q7 54 16 60Q21 79 35 85Q49 102 60 104Q82 120 89 116Q111 117 120 120'/%3E%3C/g%3E%3C/svg%3E");
+    --hw-pumpkin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 110'%3E%3Cpath d='M57 28Q50 10 65 5L71 12Q61 18 66 29' fill='%237b9b48'/%3E%3Cpath d='M68 22Q87 8 94 22Q78 28 68 22' fill='%239cb85c'/%3E%3Cellipse cx='37' cy='64' rx='31' ry='36' fill='%23dc631d'/%3E%3Cellipse cx='83' cy='64' rx='31' ry='36' fill='%23dc631d'/%3E%3Cellipse cx='60' cy='65' rx='35' ry='39' fill='%23f48a27'/%3E%3Cellipse cx='60' cy='65' rx='18' ry='39' fill='%23ffa43c'/%3E%3Cg fill='%23301b21'%3E%3Cpath d='M29 59L44 43L50 63ZM70 63L76 43L91 59ZM30 75L46 80L51 74L60 83L69 74L75 80L91 75Q82 97 60 97Q39 96 30 75Z'/%3E%3C/g%3E%3C/svg%3E");
+
+    /* Kleurvariabelen voor Jellyfin Web-versies die deze ondersteunen. */
+    --jf-palette-background-default: var(--hw-bg);
+    --jf-palette-background-paper: var(--hw-panel);
+    --jf-palette-background-defaultImage: none;
+    --jf-palette-primary-main: var(--hw-orange);
+    --jf-palette-primary-mainChannel: 255 154 60;
+    --jf-palette-primary-dark: var(--hw-orange-dark);
+    --jf-palette-primary-light: #ffb877;
+    --jf-palette-primary-contrastText: #211008;
+    --jf-palette-secondary-main: var(--hw-orange);
+    --jf-palette-secondary-contrastText: #211008;
+    --jf-palette-text-primary: var(--hw-text);
+    --jf-palette-text-secondary: var(--hw-muted);
+    --jf-palette-divider: var(--hw-border);
+    --jf-palette-action-hover: rgb(189 148 255 / 12%);
+    --jf-palette-action-focus: rgb(255 154 60 / 18%);
+    --jf-palette-AppBar-defaultBg: #17111e;
+    --jf-palette-AppBar-transparentBg: rgb(23 17 30 / 94%);
+    --jf-palette-FilledInput-bg: #211a2b;
+    --jf-palette-FilledInput-borderColor: var(--hw-border);
+    --jf-card-borderRadius: 12px;
+}
+
+html {
+    background-color: var(--hw-bg);
+    color: var(--hw-text);
+    scrollbar-color: #925f3e var(--hw-bg);
+}
+
+/* Minimale nachtachtergrond met een zachte, warme gloed. */
+.backgroundContainer {
+    background-color: var(--hw-bg) !important;
+    background-image:
+        radial-gradient(ellipse at 8% 0%, rgb(196 91 36 / 9%), transparent 60%),
+        radial-gradient(ellipse at 95% 85%, rgb(109 73 148 / 8%), transparent 65%),
+        linear-gradient(155deg, #141019 0%, #100d16 55%, #0c0b10 100%) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+/* Pompoen op de voorgrond, vast in de rechteronderhoek. */
+body::after {
+    content: "";
+    position: fixed;
+    right: max(20px, env(safe-area-inset-right));
+    bottom: max(20px, env(safe-area-inset-bottom));
+    width: 112px;
+    height: 104px;
+    background: var(--hw-pumpkin) center / contain no-repeat;
+    filter: drop-shadow(0 6px 12px rgb(0 0 0 / 55%));
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.skinHeader-withBackground,
+.skinHeader.semiTransparent {
+    background: rgb(23 17 30 / 96%) !important;
+    box-shadow: 0 1px 0 rgb(255 154 60 / 24%);
+}
+
+/* Achtergrondlagen volgen automatisch de positie en hoogte van de header.
+ * De vierkante webben blijven binnen de balk, met een maximum van 100px.
+ */
+.skinHeader:not(.osdHeader),
+.MuiAppBar-root:not(.videoOsd-appBar):not(.osdHeader) {
+    background-image: var(--hw-web-left), var(--hw-web), var(--hw-bats) !important;
+    background-repeat: no-repeat !important;
+    background-position: left top, right top, center top !important;
+    background-size:
+        auto min(100%, 100px),
+        auto min(100%, 100px),
+        max(100%, 1000px) 80px !important;
+}
+
+/* Verberg de decoraties zolang de videospeler geopend is. */
+html:has(#videoOsdPage:not(.hide)),
+html:has(.videoPlayerContainer-onTop) {
+    --hw-pumpkin: none;
+    --hw-web: none;
+    --hw-web-left: none;
+    --hw-bats: none;
+}
+
+/* Het pompoentje volgt direct op de titeltekst, niet op de rand van de balk. */
+.sectionTitle::after {
+    content: "";
+    display: inline-block;
+    width: 1.15em;
+    height: 1.15em;
+    margin-inline-start: 0.2em;
+    vertical-align: -0.15em;
+    background: var(--hw-pumpkin) center / contain no-repeat;
+    pointer-events: none;
+}
+
+/* Titel- en actiebalk op de detailpagina, in plaats van standaard grijs. */
+.detailRibbon {
+    background: linear-gradient(110deg, #352019 0%, #23172e 55%, #1a1323 100%) !important;
+    color: var(--hw-text);
+    box-shadow:
+        inset 0 1px 0 rgb(255 154 60 / 35%),
+        inset 0 -1px 0 rgb(255 154 60 / 25%);
+}
+
+.detailRibbon .itemName,
+.detailRibbon .nameContainer h1 {
+    color: var(--hw-orange);
+}
+
+.detailRibbon .paper-icon-button-light {
+    color: var(--hw-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .detailRibbon .paper-icon-button-light:hover {
+        color: var(--hw-orange);
+        background-color: rgb(255 154 60 / 12%);
+    }
+}
+
+.mainDrawer,
+.dialog,
+.toast,
+.nowPlayingPlaylist {
+    background-color: var(--hw-panel) !important;
+    color: var(--hw-text);
+}
+
+/* Halloween-balken in formulieren, zoals het venster Identificeren. */
+.formDialogHeader:not(.formDialogHeader-clear),
+.formDialogFooter:not(.formDialogFooter-clear) {
+    background: linear-gradient(110deg, #352019 0%, #23172e 55%, #1a1323 100%) !important;
+    color: var(--hw-text);
+}
+
+.formDialogHeader:not(.formDialogHeader-clear) {
+    box-shadow: inset 0 -1px 0 rgb(255 154 60 / 35%);
+}
+
+.formDialogFooter:not(.formDialogFooter-clear) {
+    box-shadow: inset 0 1px 0 rgb(255 154 60 / 35%);
+}
+
+.formDialogHeader .headerButton,
+.formDialogHeader .paper-icon-button-light {
+    color: var(--hw-orange);
+}
+
+.paperList,
+.visualCardBox {
+    background-color: var(--hw-panel) !important;
+    border-radius: 12px;
+}
+
+.sectionTitle,
+.detailPagePrimaryContainer h1 {
+    color: var(--hw-text);
+    text-shadow: 0 2px 20px rgb(255 154 60 / 15%);
+}
+
+.sectionTitle {
+    border-inline-start: 3px solid var(--hw-orange);
+    padding-inline-start: 0.55em;
+}
+
+.cardContent,
+.cardImageContainer,
+.cardOverlayContainer,
+.itemDetailImage {
+    border-radius: 12px;
+}
+
+.cardScalable {
+    position: relative;
+    border-radius: 12px;
+}
+
+/* Geen hoverrand; toetsenbordfocus gebruikt paars. */
+.card {
+    --jf-palette-secondary-main: var(--hw-purple);
+}
+
+.cardScalable,
+.card:hover .cardScalable,
+.card:focus-within .cardScalable {
+    border-left: 0 !important;
+    box-shadow: none !important;
+}
+
+.cardScalable::after {
+    content: none !important;
+}
+
+/* Zachte Halloween-gloed in plaats van de zwarte hoverlaag. */
+.cardOverlayContainer {
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg opacity='.20'%3E%3Cg fill='none' stroke='%23ffd0a0' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M83 83L53 60L38 18M80 98L36 80L12 48M80 114L34 126L12 163M86 131L58 158L52 190M117 83L147 60L162 18M120 98L164 80L188 48M120 114L166 126L188 163M114 131L142 158L148 190'/%3E%3C/g%3E%3Cellipse cx='100' cy='115' rx='27' ry='38' fill='%23ffd0a0'/%3E%3Ccircle cx='100' cy='74' r='19' fill='%23ffd0a0'/%3E%3C/g%3E%3C/svg%3E") center / 78% 78% no-repeat,
+        radial-gradient(ellipse at 20% 85%, rgb(255 137 44 / 32%), transparent 72%),
+        linear-gradient(135deg, rgb(132 75 181 / 24%), rgb(255 154 60 / 10%)) !important;
+    box-shadow: inset 0 0 30px rgb(255 154 60 / 15%);
+}
+
+.cardOverlayContainer > .cardOverlayFab-primary,
+.cardOverlayButton-centered {
+    background-color: rgb(44 23 38 / 88%) !important;
+    color: var(--hw-orange) !important;
+}
+
+.card:focus-visible .cardScalable {
+    outline: 2px solid var(--hw-purple);
+    outline-offset: 3px;
+}
+
+.button-submit,
+.fab,
+.navMenuOption-selected {
+    background: var(--hw-orange) !important;
+    color: #211008 !important;
+}
+
+.button-submit:hover,
+.fab:hover {
+    background: #ffb877 !important;
+}
+
+.button-submit,
+.raised,
+.emby-input,
+.emby-textarea,
+.emby-select-withcolor {
+    border-radius: 10px;
+}
+
+.emby-input,
+.emby-textarea,
+.emby-select-withcolor {
+    background-color: #211a2b !important;
+    border-color: var(--hw-border);
+    color: var(--hw-text);
+}
+
+.emby-select-withcolor option {
+    background: var(--hw-panel);
+    color: var(--hw-text);
+}
+
+.emby-input:focus,
+.emby-textarea:focus,
+.emby-select-withcolor:focus {
+    border-color: var(--hw-orange) !important;
+}
+
+.emby-tab-button-active,
+.button-link,
+.inputLabelFocused,
+.selectLabelFocused,
+.textareaLabelFocused {
+    color: var(--hw-orange) !important;
+}
+
+.emby-tab-button-active {
+    box-shadow: inset 0 -3px var(--hw-orange);
+}
+
+.itemProgressBarForeground,
+.mdl-slider-background-lower {
+    background: var(--hw-orange) !important;
+}
+
+.countIndicator,
+.playedIndicator {
+    background: var(--hw-orange) !important;
+    color: #211008 !important;
+}
+
+.navMenuOption:not(.navMenuOption-selected):hover {
+    background: rgb(189 148 255 / 13%);
+    color: var(--hw-text);
+}
+
+.cardText-secondary,
+.secondaryText,
+.fieldDescription {
+    color: var(--hw-muted);
+}
+
+/* Zichtbare toetsenbordfocus, ook zonder muis. */
+.emby-button:focus-visible,
+.navMenuOption:focus-visible,
+.emby-tab-button:focus-visible,
+.paper-icon-button-light:focus-visible {
+    outline: 2px solid var(--hw-purple) !important;
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    body::after {
+        width: 72px;
+        height: 66px;
+        right: max(12px, env(safe-area-inset-right));
+        bottom: max(12px, env(safe-area-inset-bottom));
+    }
+
+    .skinHeader:not(.osdHeader),
+    .MuiAppBar-root:not(.videoOsd-appBar):not(.osdHeader) {
+        background-size:
+            auto min(100%, 58px),
+            auto min(100%, 58px),
+            760px 60px !important;
+    }
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cardScalable {
+        transition: none;
+    }
+}
+
+/*
+ * Jellyfin Halloween Player
+ * Zelfstandig CSS-bestand voor de bediening van de webvideospeler.
+ * Plak dit na eventuele andere thema-CSS in Aangepaste CSS.
+ * Geen externe bestanden. Niet live getest op Jellyfin 12.2.
+ */
+
+#videoOsdPage,
+.osdHeader,
+.videoOsdBottom {
+    --hp-orange: #ff9a3c;
+    --hp-purple: #c4a0ff;
+    --hp-text: #fff4e8;
+    --hp-muted: #d3c5dc;
+    --hp-panel: #1d1428;
+    --jf-palette-primary-main: var(--hp-orange);
+    --jf-palette-primary-mainChannel: 255 154 60;
+    --jf-palette-primary-dark: #e78225;
+    --jf-palette-primary-contrastText: #211008;
+    --jf-palette-secondary-main: var(--hp-purple);
+    --jf-palette-text-primary: var(--hp-text);
+    --jf-palette-text-secondary: var(--hp-muted);
+    color: var(--hp-text);
+}
+
+/* Transparante bediening boven en onder, zonder paarse overlay. */
+.skinHeader.osdHeader,
+.osdHeader .videoOsd-appBar,
+.videoOsdBottom {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--hp-text) !important;
+}
+
+.osdHeader .paper-icon-button-light,
+.osdHeader .MuiIconButton-root,
+.videoOsdBottom .paper-icon-button-light {
+    color: var(--hp-text) !important;
+}
+
+.osdHeader .MuiTypography-root,
+.videoOsdBottom .osdTitle,
+.videoOsdBottom .osdPositionText {
+    color: var(--hp-text) !important;
+}
+
+.videoOsdBottom .osdDurationText,
+.videoOsdBottom .endsAtText {
+    color: var(--hp-muted) !important;
+}
+
+/* Voortgang en volume: oranje afgespeeld, paars resterend. */
+.videoOsdBottom .mdl-slider-background-lower {
+    background: var(--hp-orange) !important;
+}
+
+.videoOsdBottom .mdl-slider-background-upper {
+    background: #685177 !important;
+}
+
+.videoOsdBottom .mdl-slider {
+    accent-color: var(--hp-orange);
+}
+
+.videoOsdBottom .mdl-slider::-webkit-slider-thumb {
+    background: var(--hp-orange) !important;
+}
+
+.videoOsdBottom .mdl-slider::-moz-range-thumb {
+    background: var(--hp-orange) !important;
+}
+
+.videoOsdBottom .sliderBubble {
+    background-color: var(--hp-panel) !important;
+    color: var(--hp-text) !important;
+    border: 1px solid var(--hp-orange);
+    border-radius: 8px;
+}
+
+.videoOsdBottom .btnPause {
+    background-color: var(--hp-orange) !important;
+    color: #211008 !important;
+    border-radius: 50%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .osdHeader .paper-icon-button-light:hover,
+    .osdHeader .MuiIconButton-root:hover,
+    .videoOsdBottom .paper-icon-button-light:hover {
+        background-color: rgb(255 154 60 / 17%) !important;
+        color: var(--hp-orange) !important;
+    }
+
+    .videoOsdBottom .btnPause:hover {
+        background-color: #ffb877 !important;
+        color: #211008 !important;
+    }
+}
+
+.osdHeader button:focus-visible,
+.videoOsdBottom button:focus-visible,
+.videoOsdBottom input:focus-visible {
+    outline: 2px solid var(--hp-purple) !important;
+    outline-offset: 3px;
+}
+
+/* Houd de speler vrij van de decoraties van het hoofdthema. */
+html:has(#videoOsdPage:not(.hide)),
+html:has(.videoPlayerContainer-onTop) {
+    --hw-pumpkin: none;
+    --hw-web: none;
+    --hw-bats: none;
+}
+
+.osdHeader::before,
+.osdHeader::after {
+    content: none !important;
+}
+
+/* Oranje laadindicator tijdens openen en bufferen van de videospeler. */
+html:has(:is(#videoOsdPage:not(.hide), .videoPlayerContainer:not(.hide)))
+    :is(.mdl-spinner__layer, .progressring-spiner) {
+    border-color: var(--hw-orange, #ff9a3c) !important;
+}
+
+html:has(:is(#videoOsdPage:not(.hide), .videoPlayerContainer:not(.hide)))
+    .MuiCircularProgress-root {
+    color: var(--hw-orange, #ff9a3c) !important;
+}
