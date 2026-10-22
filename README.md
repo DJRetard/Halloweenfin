@@ -5,6 +5,12 @@ Geef je filmavond een Halloween-sfeer met een donkere achtergrond, warme oranje 
 
 **Eén CSS-bestand · Geen plugins nodig · Ingebouwde SVG-decoraties**
 
+## 📸 Voorbeeld
+
+![Halloweenfin met donkere achtergrond, oranje accenten en Halloween-decoraties](screenshots/halloweenfin-preview.png)
+
+*Themavoorbeeld met de originele Halloweenfin-CSS en fictieve media; geen opname van een live Jellyfin-server.*
+
 ## ✨ Wat zit erin?
 
 - **Donkere uitstraling** met een subtiele, warme gloed.
