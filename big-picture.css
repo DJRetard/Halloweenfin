@@ -55,3 +55,8 @@
 .layout-desktop #itemDetailPage .detailRibbon {
     margin-top: 40px !important;
 }
+
+/* Move the poster and all detail information down together. */
+.layout-desktop #itemDetailPage .detailPageWrapperContainer {
+    padding-top: 100px !important;
+}
