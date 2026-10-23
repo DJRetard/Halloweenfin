@@ -1,23 +1,22 @@
+/* Backdrop visibility: sharp, full-screen image without repeating tiles. */
 .backgroundContainer.withBackdrop {
     background-color: transparent !important;
     background-image:
-        linear-gradient(90deg,rgba(0, 0, 0, 1) 13vw, rgba(0, 0, 0, 0.8) 17vw, rgba(0, 0, 0, 0) 30vw),
-        linear-gradient(0deg,rgba(0, 0, 0, 1) 5vh, rgba(0, 0, 0, 0) 46vh);
-    mask:
-        linear-gradient(90deg,rgba(0, 0, 0, 1) 33vw, rgba(0, 0, 0, 0) 44vw),
-        linear-gradient(180deg,rgba(0, 0, 0, 0) calc(100vw * 0.29), rgba(0, 0, 0, 1) calc(100vw * 0.39));
-    backdrop-filter: blur(300px);
+        linear-gradient(90deg,rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 25%, rgba(0, 0, 0, 0) 55%),
+        linear-gradient(0deg,rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 45%);
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 
 .backdropImage {
     background-position: top right;
-    background-size: 70vw;
-    background-repeat: repeat;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 
 .noBackdropTransparency .detailPagePrimaryContainer {
     background-color: transparent !important;
-    background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.75) 100px);
+    background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.35) 100px);
 }
 
 .layout-desktop .detailSectionContent, .trackSelections, .layout-desktop .detailsGroupItem {
@@ -25,7 +24,7 @@
 }
 
 #itemDetailPage .padded-bottom-page {
-    background-color: rgba(0, 0, 0, 0.75) !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
 }
 
 .nameContainer {
@@ -45,4 +44,9 @@
 
 .detailLogo {
     height: 25vh !important;
+}
+
+/* Let the backdrop show through the title/action bar. */
+#itemDetailPage .detailRibbon {
+    background: rgba(18, 14, 24, 0.55) !important;
 }
