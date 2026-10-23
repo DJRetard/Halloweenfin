@@ -50,6 +50,14 @@ html {
     scrollbar-color: #925f3e var(--hw-bg);
 }
 
+/* Kleur het Jellyfin-logo pompoenoranje, ook bij een SVG-achtergrond. */
+.pageTitleWithLogo,
+.imgLogoIcon,
+.imgLogoBanner {
+    filter: brightness(0) saturate(100%) invert(69%) sepia(78%)
+        saturate(1021%) hue-rotate(331deg) brightness(103%) contrast(101%) !important;
+}
+
 /* Minimale nachtachtergrond met een zachte, warme gloed. */
 .backgroundContainer {
     background-color: var(--hw-bg) !important;
