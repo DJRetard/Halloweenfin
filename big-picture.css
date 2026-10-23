@@ -1,48 +1,106 @@
-.backgroundContainer.withBackdrop {
-    background-color: transparent !important;
-    background-image:
-        linear-gradient(90deg,rgba(0, 0, 0, 1) 13vw, rgba(0, 0, 0, 0.8) 17vw, rgba(0, 0, 0, 0) 30vw),
-        linear-gradient(0deg,rgba(0, 0, 0, 1) 5vh, rgba(0, 0, 0, 0) 46vh);
-    mask:
-        linear-gradient(90deg,rgba(0, 0, 0, 1) 33vw, rgba(0, 0, 0, 0) 44vw),
-        linear-gradient(180deg,rgba(0, 0, 0, 0) calc(100vw * 0.29), rgba(0, 0, 0, 1) calc(100vw * 0.39));
-    backdrop-filter: blur(300px);
+/*
+ * Big Picture for Jellyfin Web 12.2
+ * Adapted from MuffinOfPotato/scyfin, CSS/big-picture.css:
+ * https://github.com/MuffinOfPotato/scyfin/blob/main/CSS/big-picture.css
+ *
+ * Replace the old big-picture import with this file's contents, AFTER
+ * all theme @imports. The Scyfin base theme is optional.
+ * Enable Backdrops in Settings > Display for the desktop hero image.
+ * Selectors checked against jellyfin/jellyfin-web tag v12.2.
+ */
+
+:root {
+    --big-picture-width: 70vw;
+    --big-picture-surface: rgba(0, 0, 0, 0.58);
+    --big-picture-blur: 10px;
 }
 
-.backdropImage {
-    background-position: top right;
-    background-size: 70vw;
-    background-repeat: repeat;
+/* Jellyfin 12.2 loads the global detail backdrop at widths >= 1000px.
+ * :has() confines these global layers to the visible details page.
+ * Navigation pages and playback retain their theme's own backgrounds.
+ */
+@media (min-width: 1000px) {
+    .layout-desktop:has(#itemDetailPage:not(.hide)) .backdropImage,
+    .layout-tv:has(#itemDetailPage:not(.hide)) .backdropImage {
+        background-position: top right !important;
+        background-size: var(--big-picture-width) auto !important;
+        background-repeat: no-repeat !important;
+    }
+
+    .layout-desktop:has(#itemDetailPage:not(.hide)) .backgroundContainer.withBackdrop,
+    .layout-tv:has(#itemDetailPage:not(.hide)) .backgroundContainer.withBackdrop {
+        background-color: transparent !important;
+        background-image:
+            linear-gradient(90deg, #000 13vw, rgba(0, 0, 0, 0.8) 27vw, transparent 55vw),
+            linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.2) 100%) !important;
+        /* Keep the artwork sharp; no full-screen 300px blur or CSS masks. */
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+
+    .layout-desktop:has(.backgroundContainer.withBackdrop) #itemDetailPage:not(.hide) .detailPagePrimaryContainer,
+    .layout-tv:has(.backgroundContainer.withBackdrop) #itemDetailPage:not(.hide) .detailPagePrimaryContainer {
+        background: transparent !important;
+    }
+
+    .layout-desktop #itemDetailPage .detailLogo,
+    .layout-tv #itemDetailPage .detailLogo {
+        height: clamp(100px, 25vh, 240px) !important;
+        max-width: 40vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 }
 
-.noBackdropTransparency .detailPagePrimaryContainer {
-    background-color: transparent !important;
-    background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.75) 100px);
+/* Scope panels and text to details, including the native mobile view.
+ * Keep the background opaque when Jellyfin has not loaded any backdrop.
+ */
+#itemDetailPage .nameContainer {
+    color: #fff;
+    text-shadow: 0 1px 4px #000;
 }
 
-.layout-desktop .detailSectionContent, .trackSelections, .layout-desktop .detailsGroupItem {
-    background: rgba(0, 0, 0, 0.3) !important;
+#itemDetailPage .detailSectionContent,
+#itemDetailPage .trackSelections,
+#itemDetailPage .detailsGroupItem {
+    background: var(--big-picture-surface) !important;
 }
 
-#itemDetailPage .padded-bottom-page {
-    background-color: rgba(0, 0, 0, 0.75) !important;
+#itemDetailPage .detailPageSecondaryContainer {
+    background: rgba(0, 0, 0, 0.85) !important;
 }
 
-.nameContainer {
-    color: white;
-    text-shadow: black 0 0 4px;
+#itemDetailPage .detailTrackSelect:enabled {
+    color: #fff;
+    background-color: rgba(25, 25, 25, 0.85) !important;
+    -webkit-backdrop-filter: blur(var(--big-picture-blur));
+    backdrop-filter: blur(var(--big-picture-blur));
 }
 
-.detailTrackSelect:enabled {
-    background-color: rgba(122, 122, 122, 0.2) !important;
-    border: 0;
-    backdrop-filter: blur(var(--blur)) !important;
+#itemDetailPage .detailTrackSelect option {
+    color: #fff;
+    background-color: #191919;
 }
 
-.listItem:hover {
-    background: rgba(0, 0, 0, 0.3) !important;
+@media (hover: hover) {
+    #itemDetailPage .listItem:hover {
+        background: rgba(0, 0, 0, 0.45) !important;
+    }
 }
 
-.detailLogo {
-    height: 25vh !important;
+/* Preserve keyboard and TV remote focus indicators from Jellyfin/Scyfin. */
+#itemDetailPage .detailTrackSelect:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* Narrow desktop windows and mobile use Jellyfin's native #itemBackdrop.
+ * Do not force a 70vw image or desktop logo height on these layouts.
+ */
+@media (max-width: 999px) {
+    #itemDetailPage #itemBackdrop {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+    }
 }
