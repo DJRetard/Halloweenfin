@@ -50,3 +50,8 @@
 #itemDetailPage .detailRibbon {
     background: rgba(18, 14, 24, 0.55) !important;
 }
+
+/* Extra space above the information bar on desktop. */
+.layout-desktop #itemDetailPage .detailRibbon {
+    margin-top: 40px !important;
+}
