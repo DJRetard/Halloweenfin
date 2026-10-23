@@ -88,3 +88,7 @@ Maak een [issue aan](https://github.com/DJRetard/Halloweenfin/issues) met je Jel
 ---
 
 🍂 **Lichten uit, pompoenen aan. Veel kijkplezier!**
+
+## 🤖 Gemaakt met AI
+
+Dit project is volledig met AI gemaakt: het thema, de CSS-code, de README en het themavoorbeeld met fictieve filmposters.
