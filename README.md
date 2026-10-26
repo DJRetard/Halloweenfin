@@ -50,7 +50,7 @@ Gebruik één van deze twee methoden. Je hoeft geen bestanden in je Jellyfin-ins
 
 ## Losse transparante header
 
-Wil je een volledig transparante menubalk bovenaan met afgeronde knoppen? Gebruik dan de inhoud van [header.css](header.css) in **Dashboard → Branding → Custom CSS / Aangepaste CSS**. Dit bestand werkt zelfstandig en verwijdert achtergronddecoraties, schaduw en vervaging van de header. De headerknoppen krijgen een subtiele rand, navigatietabs een pilvorm, en hover een warme oranje gloed. Een paarse focusrand helpt bij toetsenbordbediening. De balk en knoppen blijven in rust transparant; bij aanwijzen of indrukken krijgt alleen de knop een lichte tint.
+Wil je alleen een volledig transparante menubalk bovenaan? Gebruik dan de inhoud van [header.css](header.css) in **Dashboard → Branding → Custom CSS / Aangepaste CSS**. Dit bestand werkt zelfstandig en past alleen de headerachtergrond aan, inclusief het verwijderen van achtergronddecoraties, schaduw en vervaging. Knoppen en menu-items blijven zichtbaar.
 
 Gebruik je ook andere thema-CSS, plak de inhoud van `header.css` daar **onderaan** bij. Sla op en vernieuw Jellyfin. Deze losse aanpassing is niet live getest op de genoemde versie 12.3.
 
