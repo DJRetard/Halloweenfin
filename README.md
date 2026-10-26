@@ -48,9 +48,9 @@ Wil je de CSS rechtstreeks in Jellyfin opslaan, zonder een externe stylesheet te
 
 Gebruik één van deze twee methoden. Je hoeft geen bestanden in je Jellyfin-installatie of Docker-container te wijzigen.
 
-## Losse transparante header
+## Losse witte, doorschijnende header
 
-Wil je alleen een volledig transparante menubalk bovenaan? Gebruik dan de inhoud van [header.css](header.css) in **Dashboard → Branding → Custom CSS / Aangepaste CSS**. Dit bestand werkt zelfstandig en past alleen de headerachtergrond aan, inclusief het verwijderen van achtergronddecoraties, schaduw en vervaging. Knoppen en menu-items blijven zichtbaar.
+Wil je een witte menubalk die 75% doorzichtig is? Gebruik dan de inhoud van [header.css](header.css) in **Dashboard → Branding → Custom CSS / Aangepaste CSS**. Dit bestand werkt zelfstandig en geeft alleen de headerachtergrond een witte laag van 25% dekking, zonder achtergronddecoraties, schaduw of vervaging. Tekst en iconen blijven volledig zichtbaar; de knoppen krijgen geen extra opmaak.
 
 Gebruik je ook andere thema-CSS, plak de inhoud van `header.css` daar **onderaan** bij. Sla op en vernieuw Jellyfin. Deze losse aanpassing is niet live getest op de genoemde versie 12.3.
 

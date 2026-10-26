@@ -1,5 +1,5 @@
 /*
- * Jellyfin Web — transparante header
+ * Jellyfin Web — witte header, 75% doorzichtig (25% wit)
  * Los te gebruiken; het Halloween-thema is niet nodig.
  * Plak na andere thema-CSS in Dashboard > Branding > Aangepaste CSS.
  * Alleen de menubalk bovenaan wordt aangepast, ook bij scrollen.
@@ -7,11 +7,22 @@
  */
 
 .skinHeader:not(.osdHeader),
-.skinHeader:not(.osdHeader) .headerTop,
-.skinHeader:not(.osdHeader) .headerTabs,
 .MuiAppBar-root:not(.videoOsd-appBar):not(.osdHeader) {
     --jf-palette-AppBar-defaultBg: transparent;
     --jf-palette-AppBar-transparentBg: transparent;
+    background: rgb(255 255 255 / 25%) !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Eén witte laag: geneste headeronderdelen blijven transparant.
+ * Alleen de achtergrond is doorschijnend; tekst en iconen blijven zichtbaar.
+ */
+.skinHeader:not(.osdHeader) .headerTop,
+.skinHeader:not(.osdHeader) .headerTabs,
+.skinHeader:not(.osdHeader) .MuiAppBar-root:not(.videoOsd-appBar):not(.osdHeader) {
     background: transparent !important;
     box-shadow: none !important;
     border-bottom: none !important;
